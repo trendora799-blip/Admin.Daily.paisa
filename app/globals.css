@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: #020617; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: #f1f5f9;
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.grad-text {
+  background: linear-gradient(135deg,#818cf8,#c084fc,#f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.grad-bg {
+  background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+  background-size: 200% 200%;
+  animation: gradShift 6s ease infinite;
+}
+@keyframes gradShift {
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-semibold text-white grad-bg
+         shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40
+         hover:scale-[1.03] active:scale-[.97] transition-all duration-200;
+}
+.btn-ghost {
+  @apply px-5 py-2.5 rounded-xl font-medium text-slate-300
+         hover:bg-white/5 transition-all duration-200;
+}
+.card {
+  @apply glass rounded-2xl p-6 transition-all duration-300
+         hover:shadow-xl hover:shadow-brand-500/10;
+}
+.input {
+  @apply w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60
+         text-white placeholder-slate-500 focus:outline-none focus:ring-2
+         focus:ring-brand-500/40 focus:border-brand-500 transition-all;
+}
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+}
+.badge-green  { @apply bg-emerald-500/15 text-emerald-400; }
+.badge-yellow { @apply bg-amber-500/15 text-amber-400; }
+.badge-red    { @apply bg-red-500/15 text-red-400; }
+.badge-blue   { @apply bg-blue-500/15 text-blue-400; }
+
+::-webkit-scrollbar { width:6px }
+::-webkit-scrollbar-track { background:transparent }
+::-webkit-scrollbar-thumb { background:#4f46e5; border-radius:3px }
